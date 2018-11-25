@@ -136,7 +136,7 @@
    */
   wx.config({
       debug: true,
-      appId: 'wx4490a308675228a9',
+      appId: 'wx1efb2e01089bc47c',
       timestamp: <?php echo $sign['timestamp'] ?>,
       nonceStr: <?php echo $sign['nonceStr'] ?>,
       signature: <?php echo $sign['signature'] ?>,

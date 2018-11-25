@@ -31,7 +31,7 @@ class Welcome extends CI_Controller {
 	private function getAccessToken()
     {
  
-        $url = "https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&appid=".'wx4490a308675228a9'."&secret=".'bc78e64a1e6c1b310cc525afe78a0853';
+        $url = "https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&appid=".'wx1efb2e01089bc47c'."&secret=".'6317e68bdd96c40fa9b345e130b8ac02';
         // 微信返回的信息
         $returnData = json_decode($this->curlHttp($url));
         $resData['accessToken'] = $returnData->access_token;
