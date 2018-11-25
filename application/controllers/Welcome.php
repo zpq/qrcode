@@ -64,6 +64,7 @@ class Welcome extends CI_Controller {
 			$path = "./record/{$serverId}.mp3";
 			copy("http://file.api.weixin.qq.com/cgi-bin/media/get?access_token=".$this->token."&media_id={$serverId}", $path);
 			$exit->record_path = substr ($path, 1);
+			$exit->has_record = 1;
 			$cnt = $this->Qrcode->update(json_decode(json_encode($exit), true));
 			if ($cnt > 0) {
 				$res['code'] = 0;
@@ -128,7 +129,7 @@ class Welcome extends CI_Controller {
         $ticket = $ticketList['ticket'];
         
         // 该url为调用jssdk接口的url
-        $url = 'http://sheaned.com/index.php/welcome/index/id/' . $id;
+        $url = 'http://sheaned.com/index.php/welcome/index?id=' . $id;
         // 生成时间戳
         $timestamp = time();
         // 生成随机字符串
