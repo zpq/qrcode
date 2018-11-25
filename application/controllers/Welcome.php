@@ -64,16 +64,16 @@ class Welcome extends CI_Controller {
 			$path = "/record/{$serverId}.amr";
 			$path2 = "/record/{$serverId}.mp3";
 
-			$amr = __DIR__ . $path;
-			$mp3 = __DIR__ . $path2;
+			$amr = dirname(APPPATH) . $path;
+			$mp3 = dirname(APPPATH) . $path2;
 
 			$this->downAndSaveFile("http://file.api.weixin.qq.com/cgi-bin/media/get?access_token=".$token['accessToken']."&media_id={$serverId}", "." . $path);
 
 			// $boo = copy("http://file.api.weixin.qq.com/cgi-bin/media/get?access_token=".$token."&media_id={$serverId}", $path);
 			
 			
-			$command = "/usr/local/bin/ffmpeg -i $amr $mp3 >> /var/log/mm.log";  
-			exec($command); 
+			$command = "/usr/local/bin/ffmpeg -i $amr $mp3";  
+			system($command); 
 
 			$exit->record_path = $path2;
 			$exit->has_record = 1;
