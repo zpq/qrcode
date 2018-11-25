@@ -73,7 +73,7 @@ class Welcome extends CI_Controller {
 			
 			
 			$command = "/usr/local/bin/ffmpeg -i $amr $mp3 >> /var/log/mm.log";  
-			exec($command, $error);  
+			exec($command); 
 
 			$exit->record_path = $path2;
 			$exit->has_record = 1;
