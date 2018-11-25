@@ -32,7 +32,7 @@ class Welcome extends CI_Controller {
 
 		$exit = $this->Qrcode->get($id);
 
-		if (empty(exit)) {
+		if (empty($exit)) {
 			echo "无效的二维码";
 			return;
 		}
@@ -41,12 +41,12 @@ class Welcome extends CI_Controller {
 
 		// print_r($sign);
 
-		if (!empty(exit) && $exit->has_record) { //播放录音
+		if (!empty($exit) && $exit->has_record) { //播放录音
 
 
 			$this->load->view('play', array("record_path" => $exit->record_path));
 		} else { // 进行录音
-			$this->load->view('index', array("sign" => $sign, "qrcodeId" => id));
+			$this->load->view('index', array("sign" => $sign, "qrcodeId" => $id));
 		}
 
 	}
@@ -69,7 +69,7 @@ class Welcome extends CI_Controller {
 				$res['code'] = 0;
 			}
 		}
-		echo json_encode(res);
+		echo json_encode($res);
 		return;
 	}
 
