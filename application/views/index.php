@@ -12,9 +12,9 @@
 </head>
 <body ontouchstart="">
 
-  <span class="desc">开始录音接口</span>
+  <span class="desc">开始录音</span>
   <button class="btn btn_primary" id="startRecord">startRecord</button>
-  <span class="desc">停止录音接口</span>
+  <span class="desc">停止录音</span>
   <button class="btn btn_primary" id="stopRecord">stopRecord</button>
 
   <div class="wxapi_container">
