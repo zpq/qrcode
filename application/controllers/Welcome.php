@@ -22,7 +22,7 @@ class Welcome extends CI_Controller {
 	{
 		$sign = $this->getSignPackage();
 
-
+		print_r($sign);
 
 		$this->load->view('index', array("sign" => $sign));
 	}
