@@ -6,9 +6,16 @@
   <title>微信JS-SDK Demo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=0">
   <link rel="stylesheet" href="/static/css/style.css">
+  <style>
+    .wxapi_container {display:none;}
+  </style>
 </head>
 <body ontouchstart="">
-<div class="wxapi_container">
+      <span class="desc">开始录音接口</span>
+      <button class="btn btn_primary" id="startRecord">startRecord</button>
+      <span class="desc">停止录音接口</span>
+      <button class="btn btn_primary" id="stopRecord">stopRecord</button>
+<!-- <div class="wxapi_container"> -->
     <div class="wxapi_index_container">
       <ul class="label_box lbox_close wxapi_index_list">
         <li class="label_item wxapi_index_item"><a class="label_inner" href="#menu-basic">基础接口</a></li>
@@ -120,9 +127,15 @@
       <button class="btn btn_primary" id="chooseWXPay">chooseWXPay</button>
     </div>
   </div>
+
+
 </body>
 <script src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
 <script>
+
+
+  var qrcodeId = "<?php echo $qrcodeId ?>";
+
   /*
    * 注意：
    * 1. 所有的JS接口只能在公众号绑定的域名下调用，公众号开发者需要先登录微信公众平台进入“公众号设置”的“功能设置”里填写“JS接口安全域名”。
