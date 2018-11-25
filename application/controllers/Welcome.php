@@ -61,9 +61,16 @@ class Welcome extends CI_Controller {
 		if (empty($exit)) {
 			$res['message'] = "无效的二维码";
 		} else {
-			$path = "./record/{$serverId}.mp3";
+			$path = "./record/{$serverId}.amr";
+			$path2 = "./record/{$serverId}.mp3";
 			$boo = copy("http://file.api.weixin.qq.com/cgi-bin/media/get?access_token=".$this->token."&media_id={$serverId}", $path);
-			$exit->record_path = substr ($path, 1);
+			
+			$amr = __DIR__ . "/" . $path;
+			$mp3 = __DIR__ . "/" . $path2;
+			$command = "/usr/local/bin/ffmpeg -i $amr $mp3";  
+			exec($command, $error);  
+
+			$exit->record_path = substr ($path2, 1);
 			$exit->has_record = 1;
 			$cnt = $this->Qrcode->update(json_decode(json_encode($exit), true));
 			$res['boo'] = $boo;
