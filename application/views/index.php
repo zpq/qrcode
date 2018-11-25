@@ -137,9 +137,9 @@
   wx.config({
       debug: true,
       appId: 'wx1efb2e01089bc47c',
-      timestamp: <?php echo $sign['timestamp'] ?>,
-      nonceStr: <?php echo $sign['nonceStr'] ?>,
-      signature: <?php echo $sign['signature'] ?>,
+      timestamp: "<?php echo $sign['timestamp'] ?>",
+      nonceStr: "<?php echo $sign['nonceStr'] ?>",
+      signature: "<?php echo $sign['signature'] ?>",
       jsApiList: [
         'checkJsApi',
         'onMenuShareTimeline',

@@ -12,6 +12,7 @@
 wx.ready(function () {
   // 1 判断当前版本是否支持指定 JS 接口，支持批量判断
   document.querySelector('#checkJsApi').onclick = function () {
+    alert("hell")
     wx.checkJsApi({
       jsApiList: [
         'getNetworkType',
@@ -19,7 +20,10 @@ wx.ready(function () {
       ],
       success: function (res) {
         alert(JSON.stringify(res));
-      }
+      },
+      fail: function (res) {
+        alert(JSON.stringify(res));
+      },
     });
   };
 
