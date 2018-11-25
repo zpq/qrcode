@@ -63,17 +63,21 @@ class Welcome extends CI_Controller {
 
 			$path = "/record/{$serverId}.amr";
 			$path2 = "/record/{$serverId}.mp3";
-			$boo = copy("http://file.api.weixin.qq.com/cgi-bin/media/get?access_token=".$token."&media_id={$serverId}", $path);
-			
+
 			$amr = __DIR__ . $path;
 			$mp3 = __DIR__ . $path2;
+
+			$this->downAndSaveFile("http://file.api.weixin.qq.com/cgi-bin/media/get?access_token=".$token."&media_id={$serverId}", "." . $path);
+
+			// $boo = copy("http://file.api.weixin.qq.com/cgi-bin/media/get?access_token=".$token."&media_id={$serverId}", $path);
+			
+			
 			$command = "/usr/local/bin/ffmpeg -i $amr $mp3";  
 			exec($command, $error);  
 
 			$exit->record_path = $path2;
 			$exit->has_record = 1;
 			$cnt = $this->Qrcode->update(json_decode(json_encode($exit), true));
-			$res['boo'] = $boo;
 			$res['cnt'] = $cnt;
 			if ($cnt > 0) {
 				$res['code'] = 0;
@@ -187,6 +191,16 @@ class Welcome extends CI_Controller {
         return $str;
     }
 
+	function downAndSaveFile($url,$savePath){
+		ob_start();
+		readfile($url);
+		$img  = ob_get_contents();
+		ob_end_clean();
+		$size = strlen($img);
+		$fp = fopen($savePath, 'a');
+		fwrite($fp, $img);
+		fclose($fp);
+	}
 
 
 
