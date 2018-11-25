@@ -81,7 +81,7 @@ class Welcome extends CI_Controller {
         // 生成随机字符串
         $nonceStr = $this->createNoncestr();
         // 这里参数的顺序要按照 key 值 ASCII 码升序排序 j -> n -> t -> u
-        $string = "jsapi_ticket=$ticket&noncestr=$nonceStr×tamp=$timestamp&url=$url";
+        $string = "jsapi_ticket=$ticket&noncestr=$nonceStr&timestamp=$timestamp&url=$url";
         $signature = sha1($string);
         $signPackage = array (
             "appId" => 'wxda450acec7d47d60',
