@@ -58,7 +58,7 @@ class Welcome extends CI_Controller {
 		$res = array("code" => -1);
 
 		$exit = $this->Qrcode->get($qrcodeId);
-		if (empty(exit)) {
+		if (empty($exit)) {
 			
 		} else {
 			$path = "./record/{$serverId}.mp3";
