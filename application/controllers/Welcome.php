@@ -62,10 +62,12 @@ class Welcome extends CI_Controller {
 			
 		} else {
 			$path = "./record/{$serverId}.mp3";
-			copy("http://file.api.weixin.qq.com/cgi-bin/media/get?access_token=".$this->token."&media_id={$serverId}", $path);
+			$boo = copy("http://file.api.weixin.qq.com/cgi-bin/media/get?access_token=".$this->token."&media_id={$serverId}", $path);
 			$exit->record_path = substr ($path, 1);
 			$exit->has_record = 1;
 			$cnt = $this->Qrcode->update(json_decode(json_encode($exit), true));
+			$res['boo'] = $boo;
+			$res['cnt'] = $cnt;
 			if ($cnt > 0) {
 				$res['code'] = 0;
 			}

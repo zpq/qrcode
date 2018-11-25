@@ -11,11 +11,13 @@
   </style>
 </head>
 <body ontouchstart="">
-      <span class="desc">开始录音接口</span>
-      <button class="btn btn_primary" id="startRecord">startRecord</button>
-      <span class="desc">停止录音接口</span>
-      <button class="btn btn_primary" id="stopRecord">stopRecord</button>
-<!-- <div class="wxapi_container"> -->
+  
+  <span class="desc">开始录音接口</span>
+  <button class="btn btn_primary" id="startRecord">startRecord</button>
+  <span class="desc">停止录音接口</span>
+  <button class="btn btn_primary" id="stopRecord">stopRecord</button>
+
+  <div class="wxapi_container">
     <div class="wxapi_index_container">
       <ul class="label_box lbox_close wxapi_index_list">
         <li class="label_item wxapi_index_item"><a class="label_inner" href="#menu-basic">基础接口</a></li>
@@ -127,7 +129,6 @@
       <button class="btn btn_primary" id="chooseWXPay">chooseWXPay</button>
     </div>
   </div>
-
 
 </body>
 <script src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>

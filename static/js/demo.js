@@ -254,9 +254,10 @@ wx.ready(function () {
       
                   //把录音在微信服务器上的id（res.serverId）发送到自己的服务器供下载。
                   res.qrcodeId = qrcodeId;
+
                   $.ajax({
       
-                      url: 'http://sheaned.com/welcome/uploadVoice',
+                      url: 'http://sheaned.com/index.php/welcome/uploadVoice',
       
                       type: 'post',
       
@@ -268,6 +269,7 @@ wx.ready(function () {
                           if (data.code == 0) {
                             alert("上传成功")
                           } else {
+                            alert(JSON.stringify(data))
                             alert("上传失败，请重新录音")
                           }
                       },
