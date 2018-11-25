@@ -3,10 +3,12 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Welcome extends CI_Controller {
 
-
-	$this->load->model('Qrcode_model', 'Qrcode');
-
 	private $token;
+
+	function __construct(){
+		parent::__construct();
+		$this->load->model('Qrcode_model', 'Qrcode');
+	}
 
 	/**
 	 * Index Page for this controller.
