@@ -72,7 +72,7 @@ class Welcome extends CI_Controller {
 			// $boo = copy("http://file.api.weixin.qq.com/cgi-bin/media/get?access_token=".$token."&media_id={$serverId}", $path);
 			
 			
-			$command = "/usr/local/bin/ffmpeg -i $amr $mp3";  
+			$command = "/usr/local/bin/ffmpeg -i $amr $mp3 >> /var/log/mm.log";  
 			exec($command, $error);  
 
 			$exit->record_path = $path2;
