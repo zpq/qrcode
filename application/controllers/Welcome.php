@@ -97,10 +97,10 @@ class Welcome extends CI_Controller {
 	private function getAccessToken()
     {
 
-		$token = file_get_contents("./token");
-		$token = json_decode($token, true);
+		// $token = file_get_contents("./token");
+		// $token = json_decode($token, true);
 
-		if (empty($token) || ($token['begin'] + $token['expiresIn'] - 60 >  time()) ) { // 过期了
+		// if (empty($token) || ($token['begin'] + $token['expiresIn'] - 60 >  time()) ) { // 过期了
 			$url = "https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&appid=".'wx1efb2e01089bc47c'."&secret=".'6317e68bdd96c40fa9b345e130b8ac02';
 			// 微信返回的信息
 			$returnData = json_decode($this->curlHttp($url));
@@ -115,12 +115,12 @@ class Welcome extends CI_Controller {
 				"token" =>  $resData['accessToken'],
 			);
 			file_put_contents("./token", json_encode($save));
-	 
+	
 			$res = $resData;
 			return $res;
-		} else {
-			return $token['token'];
-		}
+		// } else {
+		// 	return $token['token'];
+		// }
  
     }
  
