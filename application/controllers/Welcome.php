@@ -75,7 +75,7 @@ class Welcome extends CI_Controller {
         $ticket = $ticketList['ticket'];
         
         // 该url为调用jssdk接口的url
-        $url = 'http://sheaned.com/index.php/welcome/index/';
+        $url = 'http://sheaned.com/index.php/welcome/index';
         // 生成时间戳
         $timestamp = time();
         // 生成随机字符串
