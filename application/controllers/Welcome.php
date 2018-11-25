@@ -75,7 +75,7 @@ class Welcome extends CI_Controller {
 
 	public function insert() {
 		$insert = array("has_record" => 0);
-		$cnt = $this->Qrcode->get($insert);
+		$cnt = $this->Qrcode->insert($insert);
 		var_dump($cnt);
 	}
 
