@@ -73,6 +73,12 @@ class Welcome extends CI_Controller {
 		return;
 	}
 
+	public function insert() {
+		$insert = array("has_record" => 0);
+		$cnt = $this->Qrcode->get($insert);
+		var_dump($cnt);
+	}
+
 
 	private function getAccessToken()
     {

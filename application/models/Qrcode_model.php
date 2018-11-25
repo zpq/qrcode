@@ -25,6 +25,11 @@ class Qrcode_model extends CI_model {
         return $this->db->affected_rows();
     }
 
+    public function insert($data) {
+		$this->db->insert($this->table, $data);
+		return $this->db->affected_rows();
+    }
+
 }
 
 ?>
