@@ -75,7 +75,7 @@ class Welcome extends CI_Controller {
         $ticket = $ticketList['ticket'];
         
         // 该url为调用jssdk接口的url
-        $url = 'http://www.sheaned.com/index.php';
+        $url = 'http://sheaned.com/index.php/welcome/index/';
         // 生成时间戳
         $timestamp = time();
         // 生成随机字符串
@@ -84,7 +84,7 @@ class Welcome extends CI_Controller {
         $string = "jsapi_ticket=$ticket&noncestr=$nonceStr&timestamp=$timestamp&url=$url";
         $signature = sha1($string);
         $signPackage = array (
-            "appId" => 'wxda450acec7d47d60',
+            "appId" => 'wx1efb2e01089bc47c',
             "nonceStr" => $nonceStr,
             "timestamp" => $timestamp,
             "url" => $url,
