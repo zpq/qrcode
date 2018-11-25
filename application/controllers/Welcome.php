@@ -3,7 +3,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Welcome extends CI_Controller {
 
-	private $token;
 
 	function __construct(){
 		parent::__construct();
@@ -37,15 +36,11 @@ class Welcome extends CI_Controller {
 			return;
 		}
 
-		$sign = $this->getSignPackage($id);
-
-		// print_r($sign);
-
 		if (!empty($exit) && $exit->has_record) { //播放录音
-
-
 			$this->load->view('play', array("record_path" => $exit->record_path));
 		} else { // 进行录音
+			$sign = $this->getSignPackage($id);
+			// print_r($sign);
 			$this->load->view('index', array("sign" => $sign, "qrcodeId" => $id));
 		}
 
@@ -61,16 +56,21 @@ class Welcome extends CI_Controller {
 		if (empty($exit)) {
 			$res['message'] = "无效的二维码";
 		} else {
-			$path = "./record/{$serverId}.amr";
-			$path2 = "./record/{$serverId}.mp3";
-			$boo = copy("http://file.api.weixin.qq.com/cgi-bin/media/get?access_token=".$this->token."&media_id={$serverId}", $path);
+
+
+			$token = $this->getAccessToken();
+
+
+			$path = "/record/{$serverId}.amr";
+			$path2 = "/record/{$serverId}.mp3";
+			$boo = copy("http://file.api.weixin.qq.com/cgi-bin/media/get?access_token=".$token."&media_id={$serverId}", $path);
 			
-			$amr = __DIR__ . "/" . $path;
-			$mp3 = __DIR__ . "/" . $path2;
+			$amr = __DIR__ . $path;
+			$mp3 = __DIR__ . $path2;
 			$command = "/usr/local/bin/ffmpeg -i $amr $mp3";  
 			exec($command, $error);  
 
-			$exit->record_path = substr ($path2, 1);
+			$exit->record_path = $path2;
 			$exit->has_record = 1;
 			$cnt = $this->Qrcode->update(json_decode(json_encode($exit), true));
 			$res['boo'] = $boo;
@@ -92,17 +92,32 @@ class Welcome extends CI_Controller {
 
 	private function getAccessToken()
     {
+
+		$token = file_get_contents("./token");
+		$token = json_decode($token, true);
+
+		if ($token['begin'] + $token['expiresIn'] - 60 >  time()) { // 过期了
+			$url = "https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&appid=".'wx1efb2e01089bc47c'."&secret=".'6317e68bdd96c40fa9b345e130b8ac02';
+			// 微信返回的信息
+			$returnData = json_decode($this->curlHttp($url));
+			$resData['accessToken'] = $returnData->access_token;
+			$this->token = $resData['accessToken'];
+			$resData['expiresIn'] = $returnData->expires_in;
+			$resData['time'] = date("Y-m-d H:i", time());
+
+			$save = array(
+				"begin" => time(),
+				"expiresIn" => $resData['expiresIn'],
+				"token" =>  $resData['accessToken'],
+			);
+			file_put_contents("./token", json_encode($save));
+	 
+			$res = $resData;
+			return $res;
+		} else {
+			return $token['token'];
+		}
  
-        $url = "https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&appid=".'wx1efb2e01089bc47c'."&secret=".'6317e68bdd96c40fa9b345e130b8ac02';
-        // 微信返回的信息
-        $returnData = json_decode($this->curlHttp($url));
-		$resData['accessToken'] = $returnData->access_token;
-		$this->token = $resData['accessToken'];
-        $resData['expiresIn'] = $returnData->expires_in;
-        $resData['time'] = date("Y-m-d H:i",time());
- 
-        $res = $resData;
-        return $res;
     }
  
     private function curlHttp($url) {
