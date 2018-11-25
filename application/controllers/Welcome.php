@@ -59,7 +59,7 @@ class Welcome extends CI_Controller {
 
 		$exit = $this->Qrcode->get($qrcodeId);
 		if (empty($exit)) {
-			
+			$res['message'] = "无效的二维码";
 		} else {
 			$path = "./record/{$serverId}.mp3";
 			$boo = copy("http://file.api.weixin.qq.com/cgi-bin/media/get?access_token=".$this->token."&media_id={$serverId}", $path);

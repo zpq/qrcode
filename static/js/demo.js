@@ -253,7 +253,6 @@ wx.ready(function () {
               success: function (res) {
       
                   //把录音在微信服务器上的id（res.serverId）发送到自己的服务器供下载。
-                  res.qrcodeId = qrcodeId;
 
                   $.ajax({
       
@@ -261,7 +260,7 @@ wx.ready(function () {
       
                       type: 'post',
       
-                      data: JSON.stringify(res),
+                      data: {serverId: res.serverId, qrcodeId: qrcodeId},
       
                       dataType: "json",
       
