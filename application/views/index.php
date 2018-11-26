@@ -205,5 +205,5 @@
   });
 </script>
 <script src="/static/js/zepto.min.js"></script>
-<script src="/static/js/demo.js"> </script>
+<script src="/static/js/demo.js?v=<?php echo time() ?>"> </script>
 </html>
