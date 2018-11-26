@@ -192,9 +192,9 @@ wx.ready(function () {
   document.querySelector('#stopRecord').onclick = function () {
     wx.stopRecord({
       success: function (res) {
-        // voice.localId = res.localId;
+        voice.localId = res.localId;
 
-        uploadVoice(res.localId)
+        // uploadVoice(res.localId)
 
       },
       fail: function (res) {
@@ -247,23 +247,14 @@ wx.ready(function () {
     wx.uploadVoice({
 
               localId: localId, // 需要上传的音频的本地ID，由stopRecord接口获得
-      
               isShowProgressTips: 1, // 默认为1，显示进度提示
-      
               success: function (res) {
-      
                   //把录音在微信服务器上的id（res.serverId）发送到自己的服务器供下载。
-
                   $.ajax({
-      
                       url: 'http://sheaned.com/index.php/welcome/uploadVoice',
-      
                       type: 'post',
-      
                       data: {serverId: res.serverId, qrcodeId: qrcodeId},
-      
                       dataType: "json",
-      
                       success: function (data) {
                           if (data.code == 0) {
                             alert("上传成功")
@@ -273,15 +264,10 @@ wx.ready(function () {
                             alert("上传失败，请重新录音")
                           }
                       },
-      
                       error: function (xhr, errorType, error) {
-      
                           console.log(error);
-      
                       }
-      
                   });
-      
               }
       
           });
@@ -294,11 +280,30 @@ wx.ready(function () {
       return;
     }
     wx.uploadVoice({
-      localId: voice.localId,
-      success: function (res) {
-        alert('上传语音成功，serverId 为' + res.serverId);
-        voice.serverId = res.serverId;
-      }
+      localId: localId, // 需要上传的音频的本地ID，由stopRecord接口获得
+        isShowProgressTips: 1, // 默认为1，显示进度提示
+        success: function (res) {
+            //把录音在微信服务器上的id（res.serverId）发送到自己的服务器供下载。
+            $.ajax({
+                url: uploadUrl,
+                type: 'post',
+                data: {serverId: res.serverId, qrcodeId: qrcodeId},
+                dataType: "json",
+                success: function (data) {
+                  if (data.code == 0) {
+                    alert("上传成功")
+                    location.reload();
+                  } else {
+                    // alert(JSON.stringify(data))
+                    alert("上传失败，请重新上传或者重新录音")
+                  }
+                },
+                error: function (xhr, errorType, error) {
+                    console.log(error);
+                }
+            });
+        }
+      
     });
   };
 

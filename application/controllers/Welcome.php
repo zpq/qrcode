@@ -41,7 +41,7 @@ class Welcome extends CI_Controller {
 		} else { // 进行录音
 			$sign = $this->getSignPackage($id);
 			// print_r($sign);
-			$this->load->view('index', array("sign" => $sign, "qrcodeId" => $id));
+			$this->load->view('index', array("sign" => $sign, "qrcodeId" => $id, "appId" => $this->config->item('appId')));
 		}
 
 	}
@@ -93,6 +93,10 @@ class Welcome extends CI_Controller {
 		var_dump($cnt);
 	}
 
+	public function rt() {
+		file_put_contents("./token", "");
+	}
+
 
 	private function getAccessToken()
     {
@@ -101,7 +105,11 @@ class Welcome extends CI_Controller {
 		$token = json_decode($token, true);
 
 		if (empty($token) || ($token['begin'] + $token['expiresIn'] - 60 <  time()) ) { // 过期了
-			$url = "https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&appid=".'wx1efb2e01089bc47c'."&secret=".'6317e68bdd96c40fa9b345e130b8ac02';
+
+			$appId = $this->config->item('appId');
+			$appKey = $this->config->item('appKey');
+
+			$url = "https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&appid=".$appId."&secret=".$appKey;
 			// 微信返回的信息
 			$returnData = json_decode($this->curlHttp($url));
 			$resData['accessToken'] = $returnData->access_token;

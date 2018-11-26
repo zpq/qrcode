@@ -521,3 +521,7 @@ $config['rewrite_short_tags'] = FALSE;
 | Array:		array('10.0.1.200', '192.168.5.0/24')
 */
 $config['proxy_ips'] = '';
+
+
+$config['appId'] = "wx1efb2e01089bc47c";
+$config['appKey'] = "6317e68bdd96c40fa9b345e130b8ac02";

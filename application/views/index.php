@@ -16,6 +16,14 @@
   <button class="btn btn_primary" id="startRecord">startRecord</button>
   <span class="desc">停止录音</span>
   <button class="btn btn_primary" id="stopRecord">stopRecord</button>
+  <span class="desc">播放语音接口</span>
+  <button class="btn btn_primary" id="playVoice">playVoice</button>
+  <span class="desc">暂停播放接口</span>
+  <button class="btn btn_primary" id="pauseVoice">pauseVoice</button>
+  <span class="desc">停止播放接口</span>
+  <button class="btn btn_primary" id="stopVoice">stopVoice</button>
+  <span class="desc">上传语音接口</span>
+  <button class="btn btn_primary" id="uploadVoice">uploadVoice</button>
 
   <div class="wxapi_container">
     <div class="wxapi_index_container">
@@ -137,6 +145,8 @@
 
   var qrcodeId = "<?php echo $qrcodeId ?>";
 
+  var uploadUrl = 'http://sheaned.com/index.php/welcome/uploadVoice';
+
   /*
    * 注意：
    * 1. 所有的JS接口只能在公众号绑定的域名下调用，公众号开发者需要先登录微信公众平台进入“公众号设置”的“功能设置”里填写“JS接口安全域名”。
@@ -150,7 +160,7 @@
    */
   wx.config({
       debug: false,
-      appId: 'wx1efb2e01089bc47c',
+      appId: "<?php echo $appId ?>"
       timestamp: "<?php echo $sign['timestamp'] ?>",
       nonceStr: "<?php echo $sign['nonceStr'] ?>",
       signature: "<?php echo $sign['signature'] ?>",
