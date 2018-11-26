@@ -260,7 +260,7 @@ wx.ready(function () {
                 success: function (data) {
                   if (data.code == 0) {
                     alert("上传成功")
-                    // location.reload();
+                    location.reload();
                   } else {
                     // alert(JSON.stringify(data))
                     alert("上传失败，请重新上传或者重新录音")
