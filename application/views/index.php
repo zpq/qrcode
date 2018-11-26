@@ -160,7 +160,7 @@
    */
   wx.config({
       debug: false,
-      appId: "<?php echo $appId ?>"
+      appId: "<?php echo $appId ?>",
       timestamp: "<?php echo $sign['timestamp'] ?>",
       nonceStr: "<?php echo $sign['nonceStr'] ?>",
       signature: "<?php echo $sign['signature'] ?>",
