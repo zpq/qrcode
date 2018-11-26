@@ -193,6 +193,7 @@ wx.ready(function () {
     wx.stopRecord({
       success: function (res) {
         voice.localId = res.localId;
+        alert("录音完成")
       },
       fail: function (res) {
         alert(JSON.stringify(res));
@@ -247,7 +248,7 @@ wx.ready(function () {
       return;
     }
     wx.uploadVoice({
-      localId: localId, // 需要上传的音频的本地ID，由stopRecord接口获得
+        localId: voice.localId, // 需要上传的音频的本地ID，由stopRecord接口获得
         isShowProgressTips: 1, // 默认为1，显示进度提示
         success: function (res) {
             //把录音在微信服务器上的id（res.serverId）发送到自己的服务器供下载。
@@ -259,7 +260,7 @@ wx.ready(function () {
                 success: function (data) {
                   if (data.code == 0) {
                     alert("上传成功")
-                    location.reload();
+                    // location.reload();
                   } else {
                     // alert(JSON.stringify(data))
                     alert("上传失败，请重新上传或者重新录音")
