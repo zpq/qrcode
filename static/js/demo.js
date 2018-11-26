@@ -193,9 +193,6 @@ wx.ready(function () {
     wx.stopRecord({
       success: function (res) {
         voice.localId = res.localId;
-
-        // uploadVoice(res.localId)
-
       },
       fail: function (res) {
         alert(JSON.stringify(res));
@@ -242,36 +239,6 @@ wx.ready(function () {
       alert('录音（' + res.localId + '）播放结束');
     }
   });
-
-  function uploadVoice (localId) {
-    wx.uploadVoice({
-
-              localId: localId, // 需要上传的音频的本地ID，由stopRecord接口获得
-              isShowProgressTips: 1, // 默认为1，显示进度提示
-              success: function (res) {
-                  //把录音在微信服务器上的id（res.serverId）发送到自己的服务器供下载。
-                  $.ajax({
-                      url: 'http://sheaned.com/index.php/welcome/uploadVoice',
-                      type: 'post',
-                      data: {serverId: res.serverId, qrcodeId: qrcodeId},
-                      dataType: "json",
-                      success: function (data) {
-                          if (data.code == 0) {
-                            alert("上传成功")
-                            location.reload();
-                          } else {
-                            // alert(JSON.stringify(data))
-                            alert("上传失败，请重新录音")
-                          }
-                      },
-                      error: function (xhr, errorType, error) {
-                          console.log(error);
-                      }
-                  });
-              }
-      
-          });
-  }
 
   // 4.8 上传语音
   document.querySelector('#uploadVoice').onclick = function () {
