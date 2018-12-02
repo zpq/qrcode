@@ -168,7 +168,6 @@ class Welcome extends CI_Controller {
 		// $url = 'http://sheaned.com/index.php/welcome/index?id=' . $id;
 		
 		$url = 'http://'.$_SERVER['HTTP_HOST'].$_SERVER['PHP_SELF'].'?'.$_SERVER['QUERY_STRING'];
-
         // 生成时间戳
         $timestamp = time();
         // 生成随机字符串
