@@ -145,7 +145,7 @@
 
   var qrcodeId = "<?php echo $qrcodeId ?>";
 
-  var uploadUrl = 'http://sheaned.com/index.php/welcome/uploadVoice';
+  var uploadUrl = "http://"+<?php echo $_SERVER['HTTP_HOST'] ?>+"/index.php/welcome/uploadVoice";
 
   /*
    * 注意：
