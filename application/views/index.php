@@ -17,8 +17,8 @@
   <span class="desc">停止录音</span>
   <button class="btn btn_primary" id="stopRecord">stopRecord</button>
   <span class="desc">播放语音接口</span>
-  <button class="btn btn_primary" id="playVoice">playVoice</button>
-  <span class="desc">暂停播放接口</span>
+  <!-- <button class="btn btn_primary" id="playVoice">playVoice</button>
+  <span class="desc">暂停播放接口</span> -->
   <button class="btn btn_primary" id="pauseVoice">pauseVoice</button>
   <span class="desc">停止播放接口</span>
   <button class="btn btn_primary" id="stopVoice">stopVoice</button>
