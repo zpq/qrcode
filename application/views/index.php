@@ -13,17 +13,17 @@
 <body ontouchstart="">
 
   <span class="desc">开始录音</span>
-  <button class="btn btn_primary" id="startRecord">startRecord</button>
+  <button class="btn btn_primary" id="startRecord">开始录音</button>
   <span class="desc">停止录音</span>
-  <button class="btn btn_primary" id="stopRecord">stopRecord</button>
-  <span class="desc">播放语音接口</span>
-  <!-- <button class="btn btn_primary" id="playVoice">playVoice</button>
-  <span class="desc">暂停播放接口</span> -->
-  <button class="btn btn_primary" id="pauseVoice">pauseVoice</button>
-  <span class="desc">停止播放接口</span>
-  <button class="btn btn_primary" id="stopVoice">stopVoice</button>
-  <span class="desc">上传语音接口</span>
-  <button class="btn btn_primary" id="uploadVoice">uploadVoice</button>
+  <button class="btn btn_primary" id="stopRecord">停止录音</button>
+  <span class="desc">播放语音</span>
+  <button class="btn btn_primary" id="playVoice">播放录音</button>
+  <span class="desc">暂停播放</span> -->
+  <!-- <button class="btn btn_primary" id="pauseVoice">pauseVoice</button> -->
+  <span class="desc">停止播放</span>
+  <button class="btn btn_primary" id="stopVoice">停止播放</button>
+  <span class="desc">上传语音</span>
+  <button class="btn btn_primary" id="uploadVoice">上传语音</button>
 
   <div class="wxapi_container">
     <div class="wxapi_index_container">
