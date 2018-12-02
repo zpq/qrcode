@@ -523,5 +523,8 @@ $config['rewrite_short_tags'] = FALSE;
 $config['proxy_ips'] = '';
 
 
-$config['appId'] = "wx1efb2e01089bc47c";
-$config['appKey'] = "6317e68bdd96c40fa9b345e130b8ac02";
+// $config['appId'] = "wx1efb2e01089bc47c";
+// $config['appKey'] = "6317e68bdd96c40fa9b345e130b8ac02";
+$config['appId'] = "wx03e32e427410bfe1";
+$config['appKey'] = "daf01f0940d22a4d740b69aa9620cfa1";
+
