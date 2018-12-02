@@ -167,7 +167,7 @@ class Welcome extends CI_Controller {
         // 该url为调用jssdk接口的url
 		// $url = 'http://sheaned.com/index.php/welcome/index?id=' . $id;
 		
-		$url = 'http://'.$_SERVER['HTTP_HOST'].$_SERVER['PHP_SELF'].'?'.$_SERVER['QUERY_STRING'];
+		$url = 'http://'.$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI'];
         // 生成时间戳
         $timestamp = time();
         // 生成随机字符串
