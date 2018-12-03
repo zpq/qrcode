@@ -88,9 +88,11 @@ class Welcome extends CI_Controller {
 	}
 
 	public function insert() {
+		for ($i =0; $i< 1000; $i++) {
 		$insert = array("has_record" => 0);
 		$cnt = $this->Qrcode->insert($insert);
-		var_dump($cnt);
+		}
+		//var_dump($cnt);
 	}
 
 	public function rt() {
